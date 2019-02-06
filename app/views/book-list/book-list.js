@@ -17,8 +17,14 @@ angular.module('myApp.bookList', ['ngRoute'])
                     $scope.wrapper = $scope.response['_embedded'];
                     $scope.books = $scope.wrapper.book;
 
-                    _.each($scope.books, function (book) {
-                        console.log(book.year);
+                    $scope.books = _.map($scope.books, function (book) {
+                        return {
+                            title: book.title,
+                            year: book.year,
+                            publisher: book.publisher,
+                            description: book.description,
+                            language: book.language
+                        };
                     });
                 }, function (error) {
                     $scope.status = 'Unable to load customer data: ' + error.message;
