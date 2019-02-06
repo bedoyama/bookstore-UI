@@ -13,8 +13,14 @@ angular.module('myApp.view1', ['ngRoute'])
         function getBooks() {
             restService.getBooks()
                 .then(function (response) {
-                    $scope.books = response.data;
+                    $scope.response = response.data;
+                    $scope.wrapper = $scope.response['_embedded'];
+                    $scope.books = $scope.wrapper.book;
                     console.log($scope.books);
+
+                    _.each($scope.books, function (book) {
+                        console.log(book.year);
+                    });
                 }, function (error) {
                     $scope.status = 'Unable to load customer data: ' + error.message;
                 });
