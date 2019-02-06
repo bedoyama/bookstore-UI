@@ -5,7 +5,7 @@ angular.module('myApp', [
   'ngRoute',
   'ui.grid',
   'myApp.bookList',
-  'myApp.view2',
+  'myApp.bookDetail',
   'myApp.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
